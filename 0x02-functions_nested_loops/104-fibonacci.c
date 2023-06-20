@@ -7,7 +7,7 @@ int main(void)
 {
 	int count;
 	long i, j, k;
-	long m, n, p, carry;
+	long m, n, p, carrier;
 
 	count = 0;
 	i = 0;
