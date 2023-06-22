@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
- * more_numbers - nmbr fct
- * Bwave ICT file
+ * more_numbers - number fact
+ * By Ibnu_Jabir
  * Return: no return
  */
 
