@@ -8,35 +8,32 @@
  *
  * Return: 1 if deletion succeeded, -1 if it failed.
  */
+
 int delete_nodeint_at_index(listint_t **head, unsigned int index)
 {
+	listint_t *srt, *ptr;
+
+	unsigned int k;
+
 	if (head == NULL || *head == NULL)
 		return (-1);
-
 	if (index == 0)
 	{
-		listint_t *temp = *head;
-		*head = (*head)->next;
-		free(temp);
+		next = (*head)->next;
+		free(*head);
+		*head = ptr;
 		return (1);
 	}
-
-	listint_t *current = *head;
-	unsigned int count = 0;
-
-	while (current != NULL && count < index - 1)
+	srt = *head;
+	for (i = 0; i < index - 1; i++)
 	{
-		current = current->next;
-		count++;
+		if (srt->next == NULL)
+			return (-1);
+		srt = srt->next;
 	}
-
-	if (current == NULL || current->next == NULL)
-		return (-1);
-
-	listint_t *temp = current->next;
-
-	current->next = temp->next;
-	free(temp);
-
+	ptr = srt->next;
+	srt->next = ptr->next;
+	free(ptr);
 	return (1);
+
 }
