@@ -15,7 +15,7 @@ size_t print_listint_safe(const listint_t *head)
 
 	safe = head;
 	jack = head;
-	while (new != NULL)
+	while (safe != NULL)
 	{
 		while (i > j)
 		{
