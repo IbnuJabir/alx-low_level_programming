@@ -8,25 +8,25 @@
 
 void print_binary(unsigned long int n)
 {
-	unsigned int srt, lim;
-
-	srt = 0;
-	lim = 32768;
+	int i = 0, count, k, temp;
 
 	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-	while (lim)
+	temp = n;
+	while (temp != 0)
 	{
-		if (srt == 1 && (n & lim) == 0)
-			_putchar('0');
-		else if ((n & lim) != 0)
-		{
+		i++;
+		temp = temp >> 1;
+	}
+	for (count = i - 1; count >= 0; count--)
+	{
+		k = n >> count;
+		if (k & 1)
 			_putchar('1');
-			srt = 1;
-		}
-		lim >>= 1;
+		else
+			_putchar('0');
 	}
 }
