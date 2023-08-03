@@ -1,33 +1,31 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * print_binary - Prints the binary representation of a number
- * Prototype: void print_binary(unsigned long int n);
- * @n: dec input
- * Return: 0
+ * print_binary - Prints the binary representation of a number.
+ * @n: The number to print in binary.
  */
+
 void print_binary(unsigned long int n)
 {
-	int i = 0, count, k, temp;
+	unsigned int start, lim;
 
+	start = 0;
+	lim = 32768;
 	if (n == 0)
 	{
 		_putchar('0');
 		return;
 	}
-	temp = n;
-	while (temp != 0)
+	while (lim)
 	{
-		i++;
-		temp = temp >> 1;
-	}
-	for (count = i - 1; count >= 0; count--)
-	{
-		k = n >> count;
-		if (k & 1)
-			_putchar('1');
-		else
+		if (start == 1 && (n & lim) == 0)
 			_putchar('0');
+		else if ((n & lim) != 0)
+		{
+			_putchar('1');
+			start = 1;
+		}
+		lim >>= 1;
 	}
 }
