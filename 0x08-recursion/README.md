@@ -1,1 +1,0 @@
-last campus readme
