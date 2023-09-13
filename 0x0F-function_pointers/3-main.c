@@ -4,10 +4,10 @@
 
 /**
   * main - Entry point
-  * @argc: integer argument of a func
-  * @argv: character argument of a func
+  * @argc: Integer arg
+  * @argv: a char arg
   *
-  * Return: always 0
+  * Return: 0 always
   */
 int main(int argc, char *argv[])
 {

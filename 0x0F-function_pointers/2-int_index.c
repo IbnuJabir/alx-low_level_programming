@@ -1,27 +1,30 @@
 #include "function_pointers.h"
 
 /**
- * int_index - search for integer from the given array
- * @array: the given array
- * @size: the size of the array
- * @cmp: pointer to function
- *
- * Return: index of the first element
- */
+  * int_index - Entry point
+  * @array: name of array
+  * @size: size of array
+  * @cmp: last arg
+  *
+  * Return: -1
+  */
 int int_index(int *array, int size, int (*cmp)(int))
 {
-	int i;
+	int i = 0;
 
-	if (size >= 0)
+	if (size > 0)
 	{
-		return (-1);
-	}
-	for (i = 0; i < size; i++)
-	{
-		if (cmp(array[i]))
+		if (array != NULL && cmp != NULL)
 		{
-			return (i);
+			while (i < size)
+			{
+				if (cmp(array[i]))
+					return (i);
+
+				i++;
+			}
 		}
 	}
+
 	return (-1);
 }
