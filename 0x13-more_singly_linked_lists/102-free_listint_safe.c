@@ -1,5 +1,4 @@
 #include "lists.h"
-
 /**
  * free_listint_safe - Frees a linked list safely to avoid loops
  * @head: Pointer to the pointer of the list
@@ -38,7 +37,6 @@ size_t free_listint_safe(listint_t **head)
 		free((void *)current);
 		current = temp;
 	}
-
 	*head = temp;
 	return (count_nodes);
 }
