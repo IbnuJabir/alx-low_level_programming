@@ -1,42 +1,40 @@
 #include "lists.h"
+
 /**
  * free_listint_safe - Frees a linked list safely to avoid loops
- * @head: Pointer to the pointer of the list
+ * @h: Pointer to the linked list of type listint_t
+ *
  * Return: Number of nodes freed
  */
-size_t free_listint_safe(listint_t **head)
+size_t free_listint_safe(listint_t **h)
 {
-	size_t count_nodes = 0, count_compare = 0;
-	listint_t *current, *temp, *compare_node;
+	listint_t *current, *runner, *head;
+	size_t h_count, r_count;
 
-	if (head == NULL || *head == NULL)
+	if (h == NULL || *h == NULL)
 		return (0);
 
-	current = compare_node = temp = *head;
-	count_nodes = 0;
+	current = *h;
+	head = *h;
+	h_count = 0;
 
-	while (current != NULL)
+	while (head != NULL)
 	{
-		compare_node = *head;
-		count_compare = 0;
-
-		while (count_nodes > count_compare)
+		runner = *h;
+		for (r_count = 0; r_count < h_count; r_count++)
 		{
-			if (temp == compare_node)
+			if (runner == current)
 			{
-				*head = NULL;
-				return (count_nodes);
+				*h = NULL;
+				return (h_count);
 			}
-
-			count_compare++;
-			compare_node = compare_node->next;
+			runner = runner->next;
 		}
-
-		count_nodes++;
-		temp = current->next;
-		free((void *)current);
-		current = temp;
+		current = head->next;
+		free(head);
+		head = current;
+		h_count++;
 	}
-	*head = temp;
-	return (count_nodes);
+	*h = NULL;
+	return (h_count);
 }
